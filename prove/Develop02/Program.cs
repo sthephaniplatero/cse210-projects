@@ -62,6 +62,8 @@ using System;
                         Console.Write("Enter file name to load (e.g., journal.txt): ");
                         string loadPath = Console.ReadLine();
                         myJournal.LoadFromFile(loadPath);
+                        myJournal.DisplayAll();
+                       
                         break;
 
                     case "4":
@@ -69,8 +71,7 @@ using System;
                         Console.Write("Enter file name to save (e.g., journal.txt): ");
                         string savePath = Console.ReadLine();
                         myJournal.SaveToFile(savePath);
-                        myJournal.DisplayAll();
-                       
+                        
                         break;
 
                     case "5":
