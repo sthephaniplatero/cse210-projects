@@ -59,16 +59,18 @@ using System;
                         break;
 
                     case "3":
-                        Console.Write("Enter file path to load (e.g., journal.txt): ");
+                        Console.Write("Enter file name to load (e.g., journal.txt): ");
                         string loadPath = Console.ReadLine();
                         myJournal.LoadFromFile(loadPath);
                         break;
 
                     case "4":
 
-                        Console.Write("Enter file path to save (e.g., journal.txt): ");
+                        Console.Write("Enter file name to save (e.g., journal.txt): ");
                         string savePath = Console.ReadLine();
                         myJournal.SaveToFile(savePath);
+                        myJournal.DisplayAll();
+                       
                         break;
 
                     case "5":
