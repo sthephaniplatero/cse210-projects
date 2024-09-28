@@ -11,13 +11,13 @@ public class Entry
     public Entry(DateTime date, string mood, string prompt, string content)
     {
         _date = date;
+        _mood = mood;
         _prompt = prompt;
         _content = content;
-        _mood = mood;
     } 
 
     public override string ToString()
     {
-        return $"Date:{_date.ToShortDateString()} -Mood:{_prompt} -Prompt: {_prompt} - Content: {_content}";
+        return $"Date:{_date.ToShortDateString()} -Mood:{_mood} -Prompt: {_prompt} - Content: {_content}";
     }
 }
