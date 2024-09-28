@@ -8,7 +8,7 @@ public class Entry
 
     public string _content{get; set;}
 
-    public Entry(DateTime date, string prompt, string content, string mood)
+    public Entry(DateTime date, string mood, string prompt, string content)
     {
         _date = date;
         _prompt = prompt;
@@ -18,6 +18,6 @@ public class Entry
 
     public override string ToString()
     {
-        return $"Date:{_date.ToShortDateString()} -Mood:{_mood} -Prompt: {_prompt} - Content: {_content}";
+        return $"Date:{_date.ToShortDateString()} -Mood:{_prompt} -Prompt: {_prompt} - Content: {_content}";
     }
 }
