@@ -3,7 +3,7 @@ using System;
 public class Entry
 {
     public DateTime _date{ get; set; }
-     public string _mood{get; set;}
+    public string _mood{get; set;}
     public string _prompt{ get; set; }
 
     public string _content{get; set;}
