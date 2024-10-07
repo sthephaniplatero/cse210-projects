@@ -1,3 +1,5 @@
+// I exceed the requirements adding a Timer to the program.
+
 public class Program
 {
     private static Scripture scripture;
