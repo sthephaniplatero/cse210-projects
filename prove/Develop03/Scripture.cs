@@ -34,12 +34,12 @@ public class Scripture
     public void HideRandomWord()
     {
         Random random = new Random();
-        List<Word> visibleWords = _words.FindAll(word => !word.IsHidden);
+        List<Word> visibleWords = _words.FindAll(word => !word._hidden);
 
         if (visibleWords.Count > 0)
         {
             int randomIndex = random.Next(visibleWords.Count);
-            visibleWords[randomIndex].IsHidden = true;
+            visibleWords[randomIndex]._hidden = true;
         }
     }
 }

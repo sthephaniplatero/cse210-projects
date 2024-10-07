@@ -1,18 +1,18 @@
 public class Reference
 {
-    private string Book { get; set; }
-    private int Chapter { get; set; }
-    private int Verse { get; set; }
+    private string _book { get; set; }
+    private int _chapter { get; set; }
+    private int _verse { get; set; }
 
     public Reference(string book, int chapter, int verse)
     {
-        Book = book;
-        Chapter = chapter;
-        Verse = verse;
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
     }
 
     public override string ToString()
     {
-        return $"{Book} {Chapter}:{Verse}";
+        return $"{_book} {_chapter}:{_verse}";
     }
 }
