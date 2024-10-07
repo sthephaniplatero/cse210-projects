@@ -29,6 +29,28 @@ class Fraction
 
     } 
 
+    public int GetTop()
+    {
+        return _top;
+    }
+
+    public void SetTop(int top)
+    {
+        this._top = top;
+          
+    }
+
+    public int GetBottom()
+    {
+        return _bottom;
+    }
+
+    public void SetBottom(int bottom)
+    {
+        this._bottom = bottom;
+
+    }
+
     public string GetFractionString()
     {
         string fraction = $"{_top}/{_bottom}";
