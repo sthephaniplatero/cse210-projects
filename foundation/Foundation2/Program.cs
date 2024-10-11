@@ -3,7 +3,7 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
+    {// ORDER #1
         Address address1 = new Address("1234 Elm St","Springfield", "CA", "USA");
         Customer customer1 = new Customer("Bonnie Burk",address1);
 
@@ -17,7 +17,7 @@ class Program
         order1.AddProduct(product2);
         order1.AddProduct(product3);
 
-        //Console.WriteLine(customer1.GetCustomerDetails());
+        
 
         Console.WriteLine("\n" + order1.ShippingLabel());
 
@@ -28,7 +28,7 @@ class Program
 
         Console.WriteLine("--------------------------------------------------------------------------");
 
-
+        // ORDER #2
 
         Address address2 = new Address("123 High Street", "London", "SW1A 1AA", "United Kingdom");
         Customer customer2 = new Customer("Patricia Smith",address2);
@@ -43,7 +43,7 @@ class Program
         order2.AddProduct(product5);
         order2.AddProduct(product6);
 
-        //Console.WriteLine(customer2.GetCustomerDetails());
+       
 
         Console.WriteLine("\n" + order2.ShippingLabel());
 
