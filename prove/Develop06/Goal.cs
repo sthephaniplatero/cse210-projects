@@ -1,16 +1,19 @@
-using System.Diagnostics.Tracing;
+using System.Collections.Generic;
+using System.IO;
 
 public class Goal 
 {
-    private string _shortName;
-    private string _description;
-    private int _points;
+    protected string _shortName;
+    protected string _description;
+    protected int _points;
+    protected bool _isCompleted;
 
     public Goal(string name, string description, int points)
     {
         _shortName = name;
         _description = description;
         _points = points;
+        _isCompleted = false;
     }
 
     public int GetPoints()
@@ -20,7 +23,7 @@ public class Goal
 
     public virtual void RecordEvent()
     {
-        Console.WriteLine("Event recorded for goal");
+        _isCompleted = true;
 
     }
 
@@ -31,11 +34,13 @@ public class Goal
 
     public virtual string GetDetailsString()
     {
-        return $"Goal: {_shortName}\nDescription:{_description}\n Points: {_points}";
+        string status = _isCompleted ? "[x]" : "[ ]";
+        return $"{status} {_shortName}: {_description} ({_points} points)";
     }
+    
 
     public virtual string GetStringRepresentation()
     {
-        return $"{_shortName},{_description},{_points}";
+        return $"{this.GetType().Name}{_shortName},{_description},{_points}{_isCompleted},";
     }
 }

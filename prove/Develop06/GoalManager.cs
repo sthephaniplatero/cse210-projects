@@ -6,36 +6,66 @@ public class GoalManager
     public GoalManager()
     {
         _score = 0;
-
     }
 
     public void Start()
     {
-        Console.WriteLine("***Goal Manager Started***");
-    
+        bool exit = false;
+        Console.WriteLine($"You have {_score} points\n");
 
+        while (!exit)
+        {
+            Console.WriteLine("*** Goal Manager ***");
+            Console.WriteLine("1. Create New Goal");
+            Console.WriteLine("2. List Goals");
+            Console.WriteLine("3. Save Goals");
+            Console.WriteLine("4. Load Goals");
+            Console.WriteLine("5. Record Event");
+            Console.WriteLine("6. Quit");
+            Console.Write("Choose an option: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    CreateGoal();
+                    break;
+                case "2":
+                    ListGoals();
+                    break;
+                case "3":
+                    SaveGoals();
+                    break;
+                case "4":
+                    LoadGoals();
+                    break;
+                case "5":
+                    RecordEvent();
+                    break;
+                case "6":
+                    exit = true;
+                    Console.WriteLine("Exiting Goal Manager. Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option. Try again.");
+                    break;
+            }
+            Console.WriteLine();
+        }
     }
 
-    public void DisplayPlayerInfo()
+    public void ListGoals()
     {
-        Console.WriteLine($"You have {_score} points");
-
-    }
-
-    public void ListGoalNames()
-    {
-        Console.WriteLine("List of Goal Name: ");
+        Console.WriteLine("List of Goals:");
         foreach (var goal in _goals)
         {
-            Console.WriteLine("-"+ goal.GetDetailsString());
+            Console.WriteLine(goal.GetDetailsString());
         }
-
-
     }
 
     public void CreateGoal()
     {
-        Console.WriteLine("Enter goal type (simple, eternal, checklist): ");
+        Console.WriteLine("Enter goal type (Simple, Eternal, Checklist): ");
         string goalType = Console.ReadLine();
         Console.WriteLine("Enter goal name: ");
         string name = Console.ReadLine();
@@ -48,11 +78,11 @@ public class GoalManager
         {
             _goals.Add(new SimpleGoal(name, description, points));
         }
-        else if (goalType.ToLower() == "eternal")
+        else if (goalType.ToLower() == "Eternal")
         {
             _goals.Add(new EternalGoal(name, description, points));
         }
-        else if (goalType.ToLower() == "checklist")
+        else if (goalType.ToLower() == "Checklist")
         {
             Console.WriteLine("Enter target: ");
             int target = int.Parse(Console.ReadLine());
@@ -79,7 +109,7 @@ public class GoalManager
                 if (goal.IsComplete())
                 {
                     Console.WriteLine($"Congratulations! You've completed the goal: {goal.GetDetailsString()}");
-                    _score += goal.GetPoints(); // Assuming you implement a method to get points
+                    _score += goal.GetPoints();
                 }
                 return;
             }
@@ -108,21 +138,19 @@ public class GoalManager
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Parse the line based on the expected goal type
-                    // Assuming first element is the type
                     var parts = line.Split(',');
                     string goalType = parts[0];
 
                     switch (goalType)
                     {
                         case "Simple":
-                            _goals.Add(SimpleGoal.ParseFromString(line));
+                            _goals.Add(new SimpleGoal(parts[1], parts[2], int.Parse(parts[3])));
                             break;
                         case "Eternal":
-                            _goals.Add(EternalGoal.ParseFromString(line));
+                            _goals.Add(new EternalGoal(parts[1], parts[2], int.Parse(parts[3])));
                             break;
                         case "CheckList":
-                            _goals.Add(CheckListGoal.ParseFromString(line));
+                            _goals.Add(new CheckListGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5])));
                             break;
                     }
                 }
@@ -135,10 +163,3 @@ public class GoalManager
         }
     }
 }
-
-
-  
-
- 
-
-
